@@ -1,0 +1,71 @@
+body {
+      margin: 0;
+      background: #0a000a;
+      color: #ff3c6d;
+      font-family: 'VT323', monospace;
+      font-size: 24px;
+      overflow: hidden;
+    }
+    .crt {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.01) 0px,
+        rgba(255, 255, 255, 0.01) 1px,
+        transparent 1px,
+        transparent 2px
+      );
+      pointer-events: none;
+    }
+    .container {
+      padding: 40px;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.5;
+      animation: flicker 2s infinite;
+    }
+    @keyframes flicker {
+      0%, 100% { opacity: 0.98; }
+      50% { opacity: 1; }
+    }
+    .glitch {
+      position: relative;
+    }
+    .glitch::before, .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 2px;
+      text-shadow: -1px 0 red;
+      clip: rect(0, 900px, 0, 0);
+      animation: glitch 2s infinite ease-in-out alternate;
+    }
+    .glitch::after {
+      left: -2px;
+      text-shadow: 1px 0 blue;
+      animation-delay: 0.5s;
+    }
+    @keyframes glitch {
+      0% { clip: rect(0, 999px, 0, 0); }
+      10% { clip: rect(10px, 999px, 50px, 0); }
+      20% { clip: rect(85px, 999px, 100px, 0); }
+      30% { clip: rect(30px, 999px, 60px, 0); }
+      40%, 100% { clip: rect(0, 999px, 0, 0); }
+    }
+    .choice {
+      margin-top: 40px;
+    }
+    button {
+      font-family: 'VT323', monospace;
+      background: #1a001a;
+      color: #ff3c6d;
+      border: 1px solid #ff3c6d;
+      padding: 10px 20px;
+      font-size: 20px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #330033;
+    }
